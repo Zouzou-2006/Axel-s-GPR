@@ -3,112 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AXEL'S GPR | Professional Painting Services</title>
+    <meta name="description" content="Axel's GPR delivers professional residential and commercial painting with premium finishes, clear communication, and dependable timelines.">
+    <title>AXEL'S GPR | Professional Painting & Finishing</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <div class="container">
-            <nav>
-                <div class="logo">AXEL'S GPR</div>
-                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
-                <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#services">Services</a>
-                    <a href="#testimonial">Testimonials</a>
-                    <a href="#contact">Contact</a>
+            <nav class="navbar" aria-label="Main navigation">
+                <a href="#home" class="logo" aria-label="AXEL'S GPR Home">AXEL'S GPR</a>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">☰</button>
+                <div class="nav-links" id="nav-links">
+                    <a href="#home" data-i18n="nav_home">Home</a>
+                    <a href="#about" data-i18n="nav_about">About</a>
+                    <a href="#services" data-i18n="nav_services">Services</a>
+                    <a href="#process" data-i18n="nav_process">Process</a>
+                    <a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a>
+                    <a href="#faq" data-i18n="nav_faq">FAQ</a>
+                    <a href="#contact" data-i18n="nav_contact">Contact</a>
                 </div>
-                <a href="#contact" class="btn nav-cta">Get Quote</a>
+                <div class="nav-actions">
+                    <button type="button" class="lang-toggle" id="language-toggle" aria-label="Switch language">ES</button>
+                    <a href="#contact" class="btn nav-cta" data-i18n="nav_cta">Request Estimate</a>
+                </div>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="container">
-                <div class="hero-content">
-                    <h1>Transform Your Home Today</h1>
-                    <p>Experience the magic of new colors and leave your home feeling refreshed and renewed.</p>
-                    <div class="hero-buttons">
-                        <a href="#services" class="btn">Explore Services</a>
-                        <a href="#contact" class="btn btn-outline">Contact Us</a>
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <p class="eyebrow" data-i18n="hero_eyebrow">Licensed • Insured • Detail-Driven</p>
+                        <h1 data-i18n="hero_title">Professional Painting That Elevates Every Space</h1>
+                        <p data-i18n="hero_desc">From preparation to final walkthrough, AXEL'S GPR delivers clean lines, durable finishes, and a stress-free experience for homes and businesses.</p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn" data-i18n="hero_btn_primary">Get a Free Estimate</a>
+                            <a href="#portfolio" class="btn btn-outline" data-i18n="hero_btn_secondary">View Work</a>
+                        </div>
+                        <div class="hero-trust">
+                            <span data-i18n="hero_trust_1">⭐ 5.0 Average Client Rating</span>
+                            <span data-i18n="hero_trust_2">300+ Completed Projects</span>
+                            <span data-i18n="hero_trust_3">Fast, On-Time Delivery</span>
+                        </div>
+                    </div>
+                    <div class="hero-panel" aria-label="Project highlights">
+                        <img
+                            src="https://picsum.photos/seed/axel-hero/900/620"
+                            alt="Professional painter finishing an interior wall"
+                            class="hero-image"
+                            loading="eager"
+                        >
+                        <h2 data-i18n="hero_panel_title">Why Clients Choose Us</h2>
+                        <ul>
+                            <li data-i18n="hero_panel_1">Complete surface preparation and protection</li>
+                            <li data-i18n="hero_panel_2">Premium low-odor paints and materials</li>
+                            <li data-i18n="hero_panel_3">Clear pricing with no hidden costs</li>
+                            <li data-i18n="hero_panel_4">Daily cleanup and final quality inspection</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stats Section -->
-        <section class="stats">
+        <section class="stats" aria-label="Company statistics">
             <div class="container">
                 <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">150+</div>
-                        <div class="stat-label">Satisfied Customers</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">15</div>
-                        <div class="stat-label">Smiles</div>
-                    </div>
+                    <article class="stat-item">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label" data-i18n="stat_1">Years of Experience</div>
+                    </article>
+                    <article class="stat-item">
+                        <div class="stat-number">300+</div>
+                        <div class="stat-label" data-i18n="stat_2">Projects Completed</div>
+                    </article>
+                    <article class="stat-item">
+                        <div class="stat-number">96%</div>
+                        <div class="stat-label" data-i18n="stat_3">Repeat & Referral Clients</div>
+                    </article>
+                    <article class="stat-item">
+                        <div class="stat-number">24h</div>
+                        <div class="stat-label" data-i18n="stat_4">Quote Response Time</div>
+                    </article>
                 </div>
-                <p class="stats-description">
-                    With over 5 years in the business, Axel's GPR knows the importance of providing great service to leave customers satisfied and smiling. Our goal is to make your house feel like a new home with fresh colors.
-                </p>
             </div>
         </section>
 
-        <!-- Services Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div>
+                        <p class="eyebrow" data-i18n="about_eyebrow">About AXEL'S GPR</p>
+                        <h2 class="section-title left" data-i18n="about_title">Craftsmanship, Communication, Consistency</h2>
+                        <p data-i18n="about_desc_1">We help property owners transform interiors and exteriors with professional painting and finishing services. Our team focuses on preparation, precision, and dependable communication from day one.</p>
+                        <p data-i18n="about_desc_2">Whether you are updating one room or repainting an entire property, we manage every detail with respect for your space and a finish you can trust.</p>
+                    </div>
+                    <div class="about-card">
+                        <img
+                            src="https://picsum.photos/seed/axel-team/900/560"
+                            alt="AXEL'S GPR team preparing a project site"
+                            class="about-image"
+                            loading="lazy"
+                        >
+                        <h3 data-i18n="about_card_1_title">Service Areas</h3>
+                        <p data-i18n="about_card_1_desc">Residential and commercial projects across your city and surrounding neighborhoods.</p>
+                        <h3 data-i18n="about_card_2_title">Working Hours</h3>
+                        <p data-i18n="about_card_2_desc">Monday to Saturday: 8:00 AM - 6:00 PM</p>
+                        <h3 data-i18n="about_card_3_title">Estimate Policy</h3>
+                        <p data-i18n="about_card_3_desc">Free on-site or virtual estimates with scope, timeline, and product recommendations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="services" class="services">
             <div class="container">
-                <h2 class="section-title">Professional Painting Services</h2>
-                <p class="section-subtitle">Transform your home with our expert painting services that leave you satisfied and smiling.</p>
-                
+                <h2 class="section-title" data-i18n="services_title">Our Services</h2>
+                <p class="section-subtitle" data-i18n="services_subtitle">Complete painting and finishing solutions designed for long-term results.</p>
+
                 <div class="services-grid">
-                    <div class="service-card">
-                        <h3>🎨 Expert Color Consultation</h3>
-                        <p>Our color experts will help you choose the perfect palette for your home makeover.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>🏠 Interior Painting Specialists</h3>
-                        <p>Let our team of interior painting specialists create a new home feel for you.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>🏡 Exterior Painting Services</h3>
-                        <p>Enhance your curb appeal with our durable and beautiful exterior painting.</p>
-                    </div>
+                    <article class="service-card">
+                        <h3 data-i18n="service_1_title">Interior Painting</h3>
+                        <p data-i18n="service_1_desc">Walls, ceilings, trim, doors, and cabinets with smooth, clean, even finishes.</p>
+                    </article>
+                    <article class="service-card">
+                        <h3 data-i18n="service_2_title">Exterior Painting</h3>
+                        <p data-i18n="service_2_desc">Weather-resistant systems for stucco, siding, wood, masonry, and more.</p>
+                    </article>
+                    <article class="service-card">
+                        <h3 data-i18n="service_3_title">Drywall & Surface Repair</h3>
+                        <p data-i18n="service_3_desc">Patchwork, crack repair, sanding, and priming for a flawless paint-ready surface.</p>
+                    </article>
+                    <article class="service-card">
+                        <h3 data-i18n="service_4_title">Color Consultation</h3>
+                        <p data-i18n="service_4_desc">Practical recommendations for palettes, undertones, and finish durability.</p>
+                    </article>
+                    <article class="service-card">
+                        <h3 data-i18n="service_5_title">Commercial Repaints</h3>
+                        <p data-i18n="service_5_desc">Efficient, clean execution for offices, retail spaces, and income properties.</p>
+                    </article>
+                    <article class="service-card">
+                        <h3 data-i18n="service_6_title">Maintenance Plans</h3>
+                        <p data-i18n="service_6_desc">Scheduled touch-ups and protection plans to preserve value year-round.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonial Section -->
-        <section id="testimonial" class="testimonial">
+        <section id="process" class="process">
             <div class="container">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Axel's GPR truly transformed my home with their amazing color choices. I couldn't be happier with the service they provided!"</p>
-                    <div class="customer-name">Happy Customer</div>
-                    <div class="stars">★★★★★</div>
+                <h2 class="section-title" data-i18n="process_title">Our 4-Step Process</h2>
+                <div class="process-grid">
+                    <article class="process-step">
+                        <span>01</span>
+                        <h3 data-i18n="process_1_title">Consultation</h3>
+                        <p data-i18n="process_1_desc">We review your goals, inspect surfaces, and provide transparent pricing.</p>
+                    </article>
+                    <article class="process-step">
+                        <span>02</span>
+                        <h3 data-i18n="process_2_title">Preparation</h3>
+                        <p data-i18n="process_2_desc">Protection, repairs, cleaning, and priming for maximum finish performance.</p>
+                    </article>
+                    <article class="process-step">
+                        <span>03</span>
+                        <h3 data-i18n="process_3_title">Application</h3>
+                        <p data-i18n="process_3_desc">Professional application methods with premium paint systems.</p>
+                    </article>
+                    <article class="process-step">
+                        <span>04</span>
+                        <h3 data-i18n="process_4_title">Final Walkthrough</h3>
+                        <p data-i18n="process_4_desc">Comprehensive quality check and touch-ups before final approval.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section id="contact" class="cta">
+        <section id="portfolio" class="portfolio">
             <div class="container">
-                <h2>Colorful Transformations</h2>
-                <p>Experience the joy of a new home with our expert service. Let's bring your vision to life.</p>
-                <a href="#" class="btn">Get Your Free Quote</a>
+                <h2 class="section-title" data-i18n="portfolio_title">Recent Projects</h2>
+                <p class="section-subtitle" data-i18n="portfolio_subtitle">A quick look at quality outcomes our clients expect on every project.</p>
+                <div class="portfolio-grid">
+                    <article class="portfolio-card">
+                        <img
+                            src="https://picsum.photos/seed/axel-project-1/900/620"
+                            alt="Modern living room repaint project"
+                            class="portfolio-image"
+                            loading="lazy"
+                        >
+                        <div class="portfolio-content">
+                            <h3 data-i18n="portfolio_1_title">Modern Living Room Refresh</h3>
+                            <p data-i18n="portfolio_1_desc">Neutral palette update with feature wall and premium eggshell finish.</p>
+                        </div>
+                    </article>
+                    <article class="portfolio-card">
+                        <img
+                            src="https://picsum.photos/seed/axel-project-2/900/620"
+                            alt="Exterior home painting and curb appeal project"
+                            class="portfolio-image"
+                            loading="lazy"
+                        >
+                        <div class="portfolio-content">
+                            <h3 data-i18n="portfolio_2_title">Exterior Curb Appeal Restoration</h3>
+                            <p data-i18n="portfolio_2_desc">Full façade repaint with trim detailing and weather-resistant coatings.</p>
+                        </div>
+                    </article>
+                    <article class="portfolio-card">
+                        <img
+                            src="https://picsum.photos/seed/axel-project-3/900/620"
+                            alt="Commercial office interior repaint"
+                            class="portfolio-image"
+                            loading="lazy"
+                        >
+                        <div class="portfolio-content">
+                            <h3 data-i18n="portfolio_3_title">Office Interior Rebrand</h3>
+                            <p data-i18n="portfolio_3_desc">Fast-turn commercial repaint coordinated around operational hours.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonial" aria-label="Client testimonials">
+            <div class="container">
+                <h2 class="section-title" data-i18n="testimonials_title">What Clients Say</h2>
+                <div class="testimonial-grid">
+                    <article class="testimonial-card">
+                        <p class="testimonial-text" data-i18n="testimonial_1_text">"The crew was punctual, respectful, and detail-oriented. The finish quality exceeded our expectations."</p>
+                        <div class="customer-name" data-i18n="testimonial_1_name">— Residential Client</div>
+                    </article>
+                    <article class="testimonial-card">
+                        <p class="testimonial-text" data-i18n="testimonial_2_text">"Great communication from quote to completion. Clean execution and delivered right on schedule."</p>
+                        <div class="customer-name" data-i18n="testimonial_2_name">— Business Owner</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2 class="section-title" data-i18n="faq_title">Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <details>
+                        <summary data-i18n="faq_1_q">How long does a typical project take?</summary>
+                        <p data-i18n="faq_1_a">Most residential interiors are completed in 2 to 5 days depending on repairs, scope, and drying conditions.</p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq_2_q">Do you help with paint color selection?</summary>
+                        <p data-i18n="faq_2_a">Yes. We guide color and sheen selection based on lighting, use, and durability requirements.</p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq_3_q">Are estimates free?</summary>
+                        <p data-i18n="faq_3_a">Yes. Every estimate includes a clear scope, timeline, and pricing breakdown.</p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq_4_q">Are you insured?</summary>
+                        <p data-i18n="faq_4_a">Yes, AXEL'S GPR is fully insured for residential and commercial painting projects.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div>
+                        <p class="eyebrow" data-i18n="contact_eyebrow">Let's Talk</p>
+                        <h2 class="section-title left" data-i18n="contact_title">Request Your Free Estimate</h2>
+                        <p data-i18n="contact_desc">Tell us about your project and we will contact you with next steps within 24 hours.</p>
+                        <ul class="contact-list">
+                            <li><strong data-i18n="contact_phone_label">Phone:</strong> (555) 123-4567</li>
+                            <li><strong data-i18n="contact_email_label">Email:</strong> hello@axelsgpr.com</li>
+                            <li><strong data-i18n="contact_location_label">Location:</strong> Your City, ST</li>
+                            <li><strong data-i18n="contact_hours_label">Hours:</strong> Mon-Sat, 8:00 AM - 6:00 PM</li>
+                        </ul>
+                    </div>
+                    <form class="contact-form" id="contact-form" novalidate>
+                        <label for="name" data-i18n="form_name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" data-i18n-placeholder="ph_name" required>
+
+                        <label for="phone" data-i18n="form_phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" data-i18n-placeholder="ph_phone" required>
+
+                        <label for="email" data-i18n="form_email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@email.com" data-i18n-placeholder="ph_email" required>
+
+                        <label for="service" data-i18n="form_service">Service Needed</label>
+                        <select id="service" name="service" required>
+                            <option value="" data-i18n="service_select">Select a service</option>
+                            <option value="Interior Painting" data-i18n="service_option_1">Interior Painting</option>
+                            <option value="Exterior Painting" data-i18n="service_option_2">Exterior Painting</option>
+                            <option value="Commercial Repaint" data-i18n="service_option_3">Commercial Repaint</option>
+                            <option value="Surface Repair" data-i18n="service_option_4">Surface Repair</option>
+                            <option value="Other" data-i18n="service_option_5">Other</option>
+                        </select>
+
+                        <label for="message" data-i18n="form_message">Project Details</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your project goals, area, and timeline..." data-i18n-placeholder="ph_message" required></textarea>
+
+                        <button type="submit" class="btn" data-i18n="form_submit">Send Request</button>
+                        <p class="form-message" id="form-message" aria-live="polite"></p>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>© 2026 AXEL'S GPR. All rights reserved. | Professional Painting Services</p>
-            <p class="footer-contact">📞 (555) 123-4567 | 📍 Your City, ST</p>
+            <div class="footer-grid">
+                <div>
+                    <h3>AXEL'S GPR</h3>
+                    <p data-i18n="footer_desc">Professional painting and finishing services for residential and commercial properties.</p>
+                </div>
+                <div>
+                    <h3 data-i18n="footer_links">Quick Links</h3>
+                    <p><a href="#services" data-i18n="footer_services">Services</a> | <a href="#portfolio" data-i18n="footer_portfolio">Portfolio</a> | <a href="#contact" data-i18n="footer_contact">Contact</a></p>
+                </div>
+                <div>
+                    <h3 data-i18n="footer_contact_title">Contact</h3>
+                    <p>(555) 123-4567<br>hello@axelsgpr.com<br><span data-i18n="footer_city">Your City, ST</span></p>
+                </div>
+            </div>
+            <p class="copyright" data-i18n="footer_copy">© 2026 AXEL'S GPR. All rights reserved.</p>
         </div>
     </footer>
 
