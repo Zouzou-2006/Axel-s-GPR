@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Axel's GPR delivers professional residential and commercial painting along with remodeling and finishing services.">
     <title>AXEL'S GPR | Professional Painting & Remodeling Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="lux-theme">
     <header class="site-header">
         <div class="container">
             <nav class="navbar" aria-label="Main navigation">
@@ -23,7 +26,6 @@
                     <a href="#contact" data-i18n="nav_contact">Contact</a>
                 </div>
                 <div class="nav-actions">
-                    <button type="button" class="lang-toggle" id="language-toggle" aria-label="Switch language">ES</button>
                     <a href="#contact" class="btn nav-cta" data-i18n="nav_cta">Request Estimate</a>
                 </div>
             </nav>
@@ -32,9 +34,14 @@
 
     <main>
         <section id="home" class="hero">
+            <div class="hero-bg" aria-hidden="true">
+                <span class="glow glow-one"></span>
+                <span class="glow glow-two"></span>
+                <span class="grid-fade"></span>
+            </div>
             <div class="container">
                 <div class="hero-grid">
-                    <div class="hero-content">
+                    <div class="hero-content" data-reveal>
                         <p class="eyebrow" data-i18n="hero_eyebrow">Licensed • Insured • Detail-Driven</p>
                         <h1 data-i18n="hero_title">Professional Painting That Elevates Every Space</h1>
                         <p data-i18n="hero_desc">From preparation to final walkthrough, AXEL'S GPR delivers clean lines, durable finishes, and a stress-free experience for homes and businesses.</p>
@@ -48,7 +55,7 @@
                             <span data-i18n="hero_trust_3">Fast, On-Time Delivery</span>
                         </div>
                     </div>
-                    <div class="hero-panel" aria-label="Project highlights">
+                    <div class="hero-panel" aria-label="Project highlights" data-reveal>
                         <img
                             src="https://andrewarthurhomes.com/wp-content/uploads/2024/10/001-Front_.jpg"
                             alt="Professional painter finishing an interior wall"
@@ -90,7 +97,7 @@
             </div>
         </section>
 
-        <section id="about" class="about">
+        <section id="about" class="about" data-reveal>
             <div class="container">
                 <div class="about-grid">
                     <div>
@@ -117,33 +124,33 @@
             </div>
         </section>
 
-        <section id="services" class="services">
+        <section id="services" class="services" data-reveal>
             <div class="container">
                 <h2 class="section-title" data-i18n="services_title">Our Services</h2>
                 <p class="section-subtitle" data-i18n="services_subtitle">Complete painting and finishing solutions designed for long-term results.</p>
 
                 <div class="services-grid">
-                    <article class="service-card">
+                    <article class="service-card" data-reveal>
                         <h3 data-i18n="service_1_title">Interior Painting</h3>
                         <p data-i18n="service_1_desc">Walls, ceilings, trim, doors, and cabinets with smooth, clean, even finishes.</p>
                     </article>
-                    <article class="service-card">
+                    <article class="service-card" data-reveal>
                         <h3 data-i18n="service_2_title">Exterior Painting</h3>
                         <p data-i18n="service_2_desc">Weather-resistant systems for stucco, siding, wood, masonry, and more.</p>
                     </article>
-                    <article class="service-card">
+                    <article class="service-card" data-reveal>
                         <h3 data-i18n="service_3_title">Drywall & Surface Repair</h3>
                         <p data-i18n="service_3_desc">Patchwork, crack repair, sanding, and priming for a flawless paint-ready surface.</p>
                     </article>
-                    <article class="service-card">
+                    <article class="service-card" data-reveal>
                         <h3 data-i18n="service_4_title">Color Consultation</h3>
                         <p data-i18n="service_4_desc">Practical recommendations for palettes, undertones, and finish durability.</p>
                     </article>
-                    <article class="service-card">
+                    <article class="service-card" data-reveal>
                         <h3 data-i18n="service_5_title">Commercial Repaints</h3>
                         <p data-i18n="service_5_desc">Efficient, clean execution for offices, retail spaces, and income properties.</p>
                     </article>
-                    <article class="service-card">
+                    <article class="service-card" data-reveal>
                         <h3 data-i18n="service_6_title">Maintenance Plans</h3>
                         <p data-i18n="service_6_desc">Scheduled touch-ups and protection plans to preserve value year-round.</p>
                     </article>
@@ -151,26 +158,26 @@
             </div>
         </section>
 
-        <section id="process" class="process">
+        <section id="process" class="process" data-reveal>
             <div class="container">
                 <h2 class="section-title" data-i18n="process_title">Our 4-Step Process</h2>
                 <div class="process-grid">
-                    <article class="process-step">
+                    <article class="process-step" data-reveal>
                         <span>01</span>
                         <h3 data-i18n="process_1_title">Consultation</h3>
                         <p data-i18n="process_1_desc">We review your goals, inspect surfaces, and provide transparent pricing.</p>
                     </article>
-                    <article class="process-step">
+                    <article class="process-step" data-reveal>
                         <span>02</span>
                         <h3 data-i18n="process_2_title">Preparation</h3>
                         <p data-i18n="process_2_desc">Protection, repairs, cleaning, and priming for maximum finish performance.</p>
                     </article>
-                    <article class="process-step">
+                    <article class="process-step" data-reveal>
                         <span>03</span>
                         <h3 data-i18n="process_3_title">Application</h3>
                         <p data-i18n="process_3_desc">Professional application methods with premium paint systems.</p>
                     </article>
-                    <article class="process-step">
+                    <article class="process-step" data-reveal>
                         <span>04</span>
                         <h3 data-i18n="process_4_title">Final Walkthrough</h3>
                         <p data-i18n="process_4_desc">Comprehensive quality check and touch-ups before final approval.</p>
@@ -179,12 +186,12 @@
             </div>
         </section>
 
-        <section id="portfolio" class="portfolio">
+        <section id="portfolio" class="portfolio" data-reveal>
             <div class="container">
                 <h2 class="section-title" data-i18n="portfolio_title">Recent Projects</h2>
                 <p class="section-subtitle" data-i18n="portfolio_subtitle">A quick look at quality outcomes our clients expect on every project.</p>
                 <div class="portfolio-grid">
-                    <article class="portfolio-card">
+                    <article class="portfolio-card" data-reveal>
                         <img
                             src="https://picsum.photos/seed/axel-project-1/900/620"
                             alt="Modern living room repaint project"
@@ -196,7 +203,7 @@
                             <p data-i18n="portfolio_1_desc">Neutral palette update with feature wall and premium eggshell finish.</p>
                         </div>
                     </article>
-                    <article class="portfolio-card">
+                    <article class="portfolio-card" data-reveal>
                         <img
                             src="https://picsum.photos/seed/axel-project-2/900/620"
                             alt="Exterior home painting and curb appeal project"
@@ -208,7 +215,7 @@
                             <p data-i18n="portfolio_2_desc">Full façade repaint with trim detailing and weather-resistant coatings.</p>
                         </div>
                     </article>
-                    <article class="portfolio-card">
+                    <article class="portfolio-card" data-reveal>
                         <img
                             src="https://picsum.photos/seed/axel-project-3/900/620"
                             alt="Commercial office interior repaint"
@@ -224,15 +231,15 @@
             </div>
         </section>
 
-        <section class="testimonial" aria-label="Client testimonials">
+        <section class="testimonial" aria-label="Client testimonials" data-reveal>
             <div class="container">
                 <h2 class="section-title" data-i18n="testimonials_title">What Clients Say</h2>
                 <div class="testimonial-grid">
-                    <article class="testimonial-card">
+                    <article class="testimonial-card" data-reveal>
                         <p class="testimonial-text" data-i18n="testimonial_1_text">"The crew was punctual, respectful, and detail-oriented. The finish quality exceeded our expectations."</p>
                         <div class="customer-name" data-i18n="testimonial_1_name">— Residential Client</div>
                     </article>
-                    <article class="testimonial-card">
+                    <article class="testimonial-card" data-reveal>
                         <p class="testimonial-text" data-i18n="testimonial_2_text">"Great communication from quote to completion. Clean execution and delivered right on schedule."</p>
                         <div class="customer-name" data-i18n="testimonial_2_name">— Business Owner</div>
                     </article>
@@ -240,7 +247,7 @@
             </div>
         </section>
 
-        <section id="faq" class="faq">
+        <section id="faq" class="faq" data-reveal>
             <div class="container">
                 <h2 class="section-title" data-i18n="faq_title">Frequently Asked Questions</h2>
                 <div class="faq-list">
@@ -264,7 +271,7 @@
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <section id="contact" class="contact" data-reveal>
             <div class="container">
                 <div class="contact-grid">
                     <div>
@@ -328,6 +335,35 @@
             <p class="copyright" data-i18n="footer_copy">© 2026 AXEL'S GPR. All rights reserved.</p>
         </div>
     </footer>
+
+    <div class="assistant-nudge" id="assistant-nudge" hidden>
+        <span>👋 Hi! Got a question?</span>
+        <button type="button" class="assistant-nudge-close" id="assistant-nudge-close" aria-label="Dismiss">×</button>
+    </div>
+    <button type="button" class="assistant-fab" id="assistant-toggle" aria-label="Open Axel's AI Assistant">💬</button>
+
+    <aside class="assistant-panel" id="assistant-panel" aria-label="Axel's AI Assistant" hidden>
+        <div class="assistant-header">
+            <div>
+                <h3 data-i18n="assistant_title">Axel's AI Assistant</h3>
+                <p data-i18n="assistant_subtitle">Quick answers about services, pricing, and scheduling.</p>
+            </div>
+            <button type="button" class="assistant-close" id="assistant-close" aria-label="Close assistant">×</button>
+        </div>
+
+        <div class="assistant-messages" id="assistant-messages" aria-live="polite"></div>
+
+        <div class="assistant-quick" id="assistant-quick">
+            <button type="button" data-question="Do you offer free estimates?" data-question-es="¿Ofrecen cotizaciones gratis?" data-i18n="assistant_quick_1">Free estimate?</button>
+            <button type="button" data-question="How fast can you start?" data-question-es="¿Qué tan rápido pueden empezar?" data-i18n="assistant_quick_2">Start timeline</button>
+            <button type="button" data-question="What services do you provide?" data-question-es="¿Qué servicios ofrecen?" data-i18n="assistant_quick_3">Services</button>
+        </div>
+
+        <form class="assistant-form" id="assistant-form">
+            <input type="text" id="assistant-input" maxlength="300" data-i18n-placeholder="assistant_input_placeholder" placeholder="Ask your question..." required>
+            <button type="submit" data-i18n="assistant_send">Send</button>
+        </form>
+    </aside>
 
     <script src="script.js"></script>
 </body>

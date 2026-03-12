@@ -6,7 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('main section[id]');
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
-    const languageToggle = document.getElementById('language-toggle');
+    const assistantNudge = document.getElementById('assistant-nudge');
+    const assistantNudgeClose = document.getElementById('assistant-nudge-close');
+    const assistantToggle = document.getElementById('assistant-toggle');
+    const assistantPanel = document.getElementById('assistant-panel');
+    const assistantClose = document.getElementById('assistant-close');
+    const assistantMessages = document.getElementById('assistant-messages');
+    const assistantQuick = document.getElementById('assistant-quick');
+    const assistantForm = document.getElementById('assistant-form');
+    const assistantInput = document.getElementById('assistant-input');
 
     const translations = {
         en: {
@@ -121,6 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_contact_title: 'Contact',
             footer_city: 'Your City, ST',
             footer_copy: '© 2026 AXEL\'S GPR. All rights reserved.',
+            assistant_title: 'Axel\'s AI Assistant',
+            assistant_subtitle: 'Quick answers about services, pricing, and scheduling.',
+            assistant_input_placeholder: 'Ask your question...',
+            assistant_send: 'Send',
+            assistant_quick_1: 'Free estimate?',
+            assistant_quick_2: 'Start timeline',
+            assistant_quick_3: 'Services',
             form_error: 'Please complete all fields and enter a valid email address.',
             form_success: 'Thank you! Your estimate request has been received. We will contact you shortly.'
         },
@@ -236,12 +251,25 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_contact_title: 'Contacto',
             footer_city: 'Tu Ciudad, ST',
             footer_copy: '© 2026 AXEL\'S GPR. Todos los derechos reservados.',
+            assistant_title: 'Axel\'s AI Assistant',
+            assistant_subtitle: 'Respuestas rapidas sobre servicios, precios y agenda.',
+            assistant_input_placeholder: 'Escribe tu pregunta...',
+            assistant_send: 'Enviar',
+            assistant_quick_1: 'Cotizacion gratis?',
+            assistant_quick_2: 'Tiempo de inicio',
+            assistant_quick_3: 'Servicios',
             form_error: 'Completa todos los campos e ingresa un correo electrónico válido.',
             form_success: '¡Gracias! Hemos recibido tu solicitud y te contactaremos en breve.'
         }
     };
 
     let currentLang = localStorage.getItem('siteLanguage') || 'en';
+
+    const dismissAssistantNudge = () => {
+        if (assistantNudge) {
+            assistantNudge.hidden = true;
+        }
+    };
 
     const closeMobileMenu = () => {
         if (!navLinksContainer || !menuBtn) {
@@ -292,8 +320,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (languageToggle) {
-            languageToggle.textContent = selected === 'en' ? 'ES' : 'EN';
+        if (assistantInitialized && assistantMessages) {
+            assistantMessages.innerHTML = '';
+            chatHistory = [];
+            try { localStorage.removeItem(CHAT_HISTORY_KEY); } catch (_e) {}
+            addAssistantMessage(assistantWelcomeByLang[currentLang] || assistantWelcomeByLang.en, 'bot');
         }
 
         updateActiveNav();
@@ -334,15 +365,180 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    if (languageToggle) {
-        languageToggle.addEventListener('click', () => {
-            const nextLang = currentLang === 'en' ? 'es' : 'en';
-            applyLanguage(nextLang);
+    const addAssistantMessage = (text, role, saveToHistory = true) => {
+        if (!assistantMessages) {
+            return;
+        }
+
+        const bubble = document.createElement('div');
+        bubble.className = `assistant-msg ${role}`;
+        bubble.textContent = text;
+        assistantMessages.appendChild(bubble);
+        assistantMessages.scrollTop = assistantMessages.scrollHeight;
+
+        if (saveToHistory) {
+            chatHistory.push({ role, text });
+            saveChatHistory();
+        }
+    };
+
+    const addTypingBubble = () => {
+        if (!assistantMessages) {
+            return;
+        }
+
+        const bubble = document.createElement('div');
+        bubble.className = 'assistant-msg bot typing';
+        bubble.setAttribute('aria-label', currentLang === 'es' ? 'Escribiendo...' : 'Typing...');
+        for (let i = 0; i < 3; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'typing-dot';
+            bubble.appendChild(dot);
+        }
+
+        assistantMessages.appendChild(bubble);
+        assistantMessages.scrollTop = assistantMessages.scrollHeight;
+    };
+
+    const assistantWelcomeByLang = {
+        en: 'Hi, I am Axel\'s AI Assistant. Ask me about services, free estimates, project timing, or contact details.',
+        es: 'Hola, soy Axel\'s AI Assistant. Puedo ayudarte con servicios, cotizaciones gratis, tiempos y contacto.'
+    };
+
+    let assistantInitialized = false;
+
+    const CHAT_HISTORY_KEY = 'axels_chat_history';
+    let chatHistory = [];
+    const saveChatHistory = () => {
+        try {
+            localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify({ lang: currentLang, messages: chatHistory }));
+        } catch (_e) { /* storage full or unavailable */ }
+    };
+
+    const openAssistant = () => {
+        if (!assistantPanel) {
+            return;
+        }
+
+        assistantPanel.hidden = false;
+        dismissAssistantNudge();
+
+        if (!assistantInitialized) {
+            assistantInitialized = true;
+            try {
+                const saved = JSON.parse(localStorage.getItem(CHAT_HISTORY_KEY) || 'null');
+                if (saved && saved.lang === currentLang && Array.isArray(saved.messages) && saved.messages.length > 0) {
+                    chatHistory = saved.messages;
+                    chatHistory.forEach(({ role, text }) => addAssistantMessage(text, role, false));
+                } else {
+                    addAssistantMessage(assistantWelcomeByLang[currentLang] || assistantWelcomeByLang.en, 'bot');
+                }
+            } catch (_e) {
+                addAssistantMessage(assistantWelcomeByLang[currentLang] || assistantWelcomeByLang.en, 'bot');
+            }
+        }
+
+        if (assistantInput) {
+            assistantInput.focus();
+        }
+    };
+
+    const closeAssistant = () => {
+        if (assistantPanel) {
+            assistantPanel.hidden = true;
+        }
+    };
+
+    const askAssistant = async (question) => {
+        if (!question) {
+            return;
+        }
+
+        addAssistantMessage(question, 'user');
+        addTypingBubble();
+
+        try {
+            const response = await fetch('/api/assistant', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: question, lang: currentLang })
+            });
+
+            const typingBubble = assistantMessages ? assistantMessages.lastElementChild : null;
+            if (typingBubble && typingBubble.classList.contains('assistant-msg') && typingBubble.classList.contains('bot')) {
+                typingBubble.remove();
+            }
+
+            if (!response.ok) {
+                throw new Error('Assistant unavailable');
+            }
+
+            const payload = await response.json();
+            const reply = payload && payload.reply
+                ? payload.reply
+                : currentLang === 'es'
+                    ? 'No pude responder eso. Intenta con otra pregunta.'
+                    : 'I could not answer that. Please try another question.';
+
+            addAssistantMessage(reply, 'bot');
+        } catch (_error) {
+            const typingBubble = assistantMessages ? assistantMessages.lastElementChild : null;
+            if (typingBubble && typingBubble.classList.contains('assistant-msg') && typingBubble.classList.contains('bot')) {
+                typingBubble.remove();
+            }
+
+            addAssistantMessage(
+                currentLang === 'es'
+                    ? 'No pude conectarme al asistente en este momento. Intenta de nuevo.'
+                    : 'I could not reach the assistant right now. Please try again.',
+                'bot'
+            );
+        }
+    };
+
+    if (assistantToggle) {
+        assistantToggle.addEventListener('click', () => {
+            if (assistantPanel && !assistantPanel.hidden) {
+                closeAssistant();
+            } else {
+                openAssistant();
+            }
+        });
+    }
+
+    if (assistantClose) {
+        assistantClose.addEventListener('click', closeAssistant);
+    }
+
+    if (assistantQuick) {
+        assistantQuick.querySelectorAll('button').forEach((button) => {
+            button.addEventListener('click', () => {
+                openAssistant();
+                const question = currentLang === 'es'
+                    ? button.getAttribute('data-question-es')
+                    : button.getAttribute('data-question');
+                askAssistant(String(question || '').trim());
+            });
+        });
+    }
+
+    if (assistantForm && assistantInput) {
+        assistantForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const question = assistantInput.value.trim();
+            if (!question) {
+                return;
+            }
+
+            assistantInput.value = '';
+            askAssistant(question);
         });
     }
 
     if (contactForm && formMessage) {
-        contactForm.addEventListener('submit', (event) => {
+        contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
             const fields = [
@@ -364,11 +560,87 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            formMessage.textContent = translations[currentLang].form_success;
-            formMessage.classList.remove('error');
-            formMessage.classList.add('success');
-            contactForm.reset();
+            const payload = {
+                name: fields[0].value.trim(),
+                phone: fields[1].value.trim(),
+                email: fields[2].value.trim(),
+                service: fields[3].value.trim(),
+                message: fields[4].value.trim()
+            };
+
+            try {
+                const response = await fetch('/api/estimates', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to submit form');
+                }
+
+                formMessage.textContent = translations[currentLang].form_success;
+                formMessage.classList.remove('error');
+                formMessage.classList.add('success');
+                contactForm.reset();
+            } catch (_error) {
+                formMessage.textContent = translations[currentLang].form_error;
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+            }
         });
+    }
+
+    const revealElements = document.querySelectorAll('[data-reveal]');
+    if ('IntersectionObserver' in window && revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.18,
+                rootMargin: '0px 0px -40px 0px'
+            }
+        );
+
+        revealElements.forEach((element) => revealObserver.observe(element));
+    } else {
+        revealElements.forEach((element) => element.classList.add('is-visible'));
+    }
+
+    if (assistantNudge) {
+        const nudgeKey = 'axels_nudge_dismissed';
+        if (!localStorage.getItem(nudgeKey)) {
+            setTimeout(() => {
+                if (assistantPanel && !assistantPanel.hidden) {
+                    return;
+                }
+                assistantNudge.hidden = false;
+            }, 3000);
+        }
+
+        assistantNudge.addEventListener('click', (e) => {
+            if (e.target !== assistantNudgeClose) {
+                openAssistant();
+            }
+            dismissAssistantNudge();
+            try { localStorage.setItem(nudgeKey, '1'); } catch (_e) {}
+        });
+
+        if (assistantNudgeClose) {
+            assistantNudgeClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dismissAssistantNudge();
+                try { localStorage.setItem(nudgeKey, '1'); } catch (_e) {}
+            });
+        }
     }
 
     applyLanguage(currentLang);
