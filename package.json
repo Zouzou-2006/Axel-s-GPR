@@ -1,0 +1,29 @@
+{
+  "name": "axels-gpr",
+  "version": "1.0.0",
+  "description": "AXEL'S GPR website with MongoDB-backed contact request API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "echo \"No tests configured\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zouzou-2006/Axel-s-GPR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Zouzou-2006/Axel-s-GPR/issues"
+  },
+  "homepage": "https://github.com/Zouzou-2006/Axel-s-GPR#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.0"
+  }
+}
