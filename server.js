@@ -140,6 +140,9 @@ app.post('/api/assistant', (req, res) => {
 });
 
 app.post('/api/estimates', async (req, res) => {
+  if (!mongoConnected) {
+    return res.status(503).json({ ok: false, error: 'Database not available. Please configure MONGODB_URI.' });
+  }
   try {
     const { name, phone, email, service, message } = req.body;
 
@@ -243,13 +246,21 @@ app.get('/', (_req, res) => {
   res.sendFile(path.join(__dirname, '.vscode', 'index.html'));
 });
 
-const startServer = async () => {
-  if (!MONGODB_URI) {
-    throw new Error('Missing MONGODB_URI in environment variables');
-  }
+let mongoConnected = false;
 
-  await mongoose.connect(MONGODB_URI);
-  console.log('Connected to MongoDB');
+const startServer = async () => {
+  if (MONGODB_URI) {
+    try {
+      await mongoose.connect(MONGODB_URI);
+      mongoConnected = true;
+      console.log('Connected to MongoDB');
+    } catch (error) {
+      console.warn('MongoDB connection failed:', error.message);
+      console.warn('Server will start without database — estimate submissions will be unavailable.');
+    }
+  } else {
+    console.warn('MONGODB_URI not set — server starting without database.');
+  }
 
   app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
