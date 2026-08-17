@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Axel's GPR delivers professional residential and commercial painting along with remodeling and finishing services.">
     <title>AXEL'S GPR | Professional Painting & Remodeling Services</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AXEL'S GPR | Professional Painting & Remodeling Services">
+    <meta property="og:description" content="Licensed and insured residential and commercial painting, drywall repair, and finishing services in Cincinnati, OH.">
+    <meta property="og:image" content="https://picsum.photos/seed/axel-hero/900/620">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AXEL'S GPR | Professional Painting & Remodeling Services">
+    <meta name="twitter:description" content="Licensed and insured residential and commercial painting, drywall repair, and finishing services in Cincinnati, OH.">
+    <meta name="twitter:image" content="https://picsum.photos/seed/axel-hero/900/620">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23e8613c'/%3E%3Ctext x='32' y='43' font-family='Georgia, serif' font-size='34' font-weight='700' fill='%23f2a93b' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+    <meta name="theme-color" content="#e8613c">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
@@ -19,8 +31,10 @@
                 <div class="nav-links" id="nav-links">
                     <a href="#home" data-i18n="nav_home">Home</a>
                     <a href="#about" data-i18n="nav_about">About</a>
+                    <a href="#team" data-i18n="nav_team">Team</a>
                     <a href="#services" data-i18n="nav_services">Services</a>
                     <a href="#process" data-i18n="nav_process">Process</a>
+                    <a href="#book" data-i18n="nav_book">Book a Visit</a>
                     <a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a>
                     <a href="#faq" data-i18n="nav_faq">FAQ</a>
                     <a href="#contact" data-i18n="nav_contact">Contact</a>
@@ -50,14 +64,14 @@
                             <a href="#portfolio" class="btn btn-outline" data-i18n="hero_btn_secondary">View Work</a>
                         </div>
                         <div class="hero-trust">
-                            <span data-i18n="hero_trust_1">⭐ 5.0 Average Client Rating</span>
-                            <span data-i18n="hero_trust_2">100+ Completed Projects</span>
+                            <span data-i18n="hero_trust_1">⭐ 4.9 Average Client Rating</span>
+                            <span data-i18n="hero_trust_2">300+ Completed Projects</span>
                             <span data-i18n="hero_trust_3">Fast, On-Time Delivery</span>
                         </div>
                     </div>
                     <div class="hero-panel" aria-label="Project highlights" data-reveal>
                         <img
-                            src="./Axels%20Photos/Felix_Profile.jpg"
+                            src="images/Felix_Profile.jpg"
                             alt="Professional painter finishing an interior wall"
                             class="hero-image"
                             loading="eager"
@@ -108,7 +122,7 @@
                     </div>
                     <div class="about-card">
                         <img
-                            src="./Axels%20Photos/Kitchen_Counter.jpg"
+                            src="images/Kitchen_Counter.jpg"
                             alt="AXEL'S GPR team preparing a project site"
                             class="about-image"
                             loading="lazy"
@@ -121,6 +135,29 @@
                         <h3 data-i18n="about_card_3_title">AXELS GPR Estimate Policy</h3>
                         <p data-i18n="about_card_3_desc">Free on-site estimate when you contact us.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="team" data-reveal>
+            <div class="container">
+                <p class="eyebrow" data-i18n="team_eyebrow">Meet the Team</p>
+                <h2 class="section-title" data-i18n="team_title">The Face Behind the Finish</h2>
+                <p class="section-subtitle" data-i18n="team_subtitle">Real craftsmanship starts with someone who stands behind every job.</p>
+                <div class="team-grid">
+                    <article class="team-card" data-reveal>
+                        <img
+                            src="images/Felix_Profile.jpg"
+                            alt="Felix Gervacio, Owner of AXEL'S GPR"
+                            class="team-image"
+                            loading="lazy"
+                        >
+                        <div class="team-content">
+                            <h3 data-i18n="team_1_name">Felix Gervacio</h3>
+                            <p class="team-role" data-i18n="team_1_role">Owner &amp; Lead Painter</p>
+                            <p data-i18n="team_1_bio">Felix leads every AXEL'S GPR project personally, from the first walkthrough to the final coat. With a hands-on approach and an eye for detail, he makes sure each space gets the same care he'd give his own home.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -161,28 +198,99 @@
 
         <section id="process" class="process" data-reveal>
             <div class="container">
-                <h2 class="section-title" data-i18n="process_title">Our 4-Step Process</h2>
-                <div class="process-grid">
-                    <article class="process-step" data-reveal>
-                        <span>01</span>
-                        <h3 data-i18n="process_1_title">Consultation</h3>
-                        <p data-i18n="process_1_desc">We review your goals, inspect surfaces, and provide transparent pricing.</p>
-                    </article>
-                    <article class="process-step" data-reveal>
-                        <span>02</span>
-                        <h3 data-i18n="process_2_title">Preparation</h3>
-                        <p data-i18n="process_2_desc">Protection, repairs, cleaning, and priming for maximum finish performance.</p>
-                    </article>
-                    <article class="process-step" data-reveal>
-                        <span>03</span>
-                        <h3 data-i18n="process_3_title">Application</h3>
-                        <p data-i18n="process_3_desc">Professional application methods with premium paint systems.</p>
-                    </article>
-                    <article class="process-step" data-reveal>
-                        <span>04</span>
-                        <h3 data-i18n="process_4_title">Final Walkthrough</h3>
-                        <p data-i18n="process_4_desc">Comprehensive quality check and touch-ups before final approval.</p>
-                    </article>
+                <div class="process-layout">
+                    <div class="process-intro">
+                        <h2 class="section-title left" data-i18n="process_title">Our 4-Step Process</h2>
+                        <div class="process-grid">
+                            <article class="process-step" data-reveal>
+                                <span>01</span>
+                                <h3 data-i18n="process_1_title">Consultation</h3>
+                                <p data-i18n="process_1_desc">We review your goals, inspect surfaces, and provide transparent pricing.</p>
+                            </article>
+                            <article class="process-step" data-reveal>
+                                <span>02</span>
+                                <h3 data-i18n="process_2_title">Preparation</h3>
+                                <p data-i18n="process_2_desc">Protection, repairs, cleaning, and priming for maximum finish performance.</p>
+                            </article>
+                            <article class="process-step" data-reveal>
+                                <span>03</span>
+                                <h3 data-i18n="process_3_title">Application</h3>
+                                <p data-i18n="process_3_desc">Professional application methods with premium paint systems.</p>
+                            </article>
+                            <article class="process-step" data-reveal>
+                                <span>04</span>
+                                <h3 data-i18n="process_4_title">Final Walkthrough</h3>
+                                <p data-i18n="process_4_desc">Comprehensive quality check and touch-ups before final approval.</p>
+                            </article>
+                        </div>
+                    </div>
+                    <figure class="process-photo" data-reveal>
+                        <img
+                            src="images/drywall-repair-prep.jpg"
+                            alt="Drywall patched, taped, and primed on an accent wall during surface preparation, before painting"
+                            loading="lazy"
+                        >
+                        <figcaption data-i18n="process_photo_caption">Every repair is patched, sanded, and primed before a single coat goes on.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section id="book" class="book" data-reveal>
+            <div class="container">
+                <div class="book-grid">
+                    <div class="book-intro">
+                        <p class="eyebrow" data-i18n="book_eyebrow">Schedule Now</p>
+                        <h2 class="section-title left" data-i18n="book_title">Book Your Free On-Site Visit</h2>
+                        <p data-i18n="book_desc">Pick a date and time that works for you and we will confirm your free on-site estimate visit.</p>
+                    </div>
+                    <form class="book-form" id="book-form" novalidate>
+                        <div>
+                            <label for="book-name" data-i18n="form_name">Full Name</label>
+                            <input type="text" id="book-name" name="name" data-i18n-placeholder="ph_name" placeholder="Your full name" required>
+                        </div>
+                        <div>
+                            <label for="book-phone" data-i18n="form_phone">Phone Number</label>
+                            <input type="tel" id="book-phone" name="phone" data-i18n-placeholder="ph_phone" placeholder="(555) 123-4567" required>
+                        </div>
+                        <div>
+                            <label for="book-email" data-i18n="form_email">Email Address</label>
+                            <input type="email" id="book-email" name="email" data-i18n-placeholder="ph_email" placeholder="you@email.com" required>
+                        </div>
+                        <div>
+                            <label for="book-service" data-i18n="form_service">Service Needed</label>
+                            <select id="book-service" name="service" required>
+                                <option value="" data-i18n="service_select">Select a service</option>
+                                <option value="Interior Painting" data-i18n="service_option_1">Interior Painting</option>
+                                <option value="Exterior Painting" data-i18n="service_option_2">Exterior Painting</option>
+                                <option value="Commercial Repaint" data-i18n="service_option_3">Commercial Repaint</option>
+                                <option value="Surface Repair" data-i18n="service_option_4">Surface Repair</option>
+                                <option value="Other" data-i18n="service_option_5">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="book-date" data-i18n="book_form_date">Preferred Date</label>
+                            <input type="date" id="book-date" name="preferredDate" required>
+                        </div>
+                        <div>
+                            <label for="book-time" data-i18n="book_form_time">Preferred Time</label>
+                            <select id="book-time" name="timeSlot" required>
+                                <option value="" data-i18n="book_time_select">Select a time</option>
+                                <option value="Morning (9 AM - 11 AM)" data-i18n="book_time_1">Morning (9 AM - 11 AM)</option>
+                                <option value="Midday (11 AM - 1 PM)" data-i18n="book_time_2">Midday (11 AM - 1 PM)</option>
+                                <option value="Afternoon (1 PM - 3 PM)" data-i18n="book_time_3">Afternoon (1 PM - 3 PM)</option>
+                                <option value="Late Afternoon (3 PM - 5 PM)" data-i18n="book_time_4">Late Afternoon (3 PM - 5 PM)</option>
+                            </select>
+                        </div>
+                        <div class="book-form-full">
+                            <label for="book-notes" data-i18n="book_form_notes">Notes (optional)</label>
+                            <textarea id="book-notes" name="notes" rows="2" data-i18n-placeholder="book_notes_placeholder" placeholder="Anything we should know before we arrive?"></textarea>
+                        </div>
+                        <div class="book-form-full">
+                            <button type="submit" class="btn" data-i18n="book_form_submit">Confirm Booking</button>
+                            <p id="book-message" class="form-message" role="status"></p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -190,44 +298,44 @@
         <section id="portfolio" class="portfolio" data-reveal>
             <div class="container">
                 <h2 class="section-title" data-i18n="portfolio_title">Recent Projects</h2>
-                <p class="section-subtitle" data-i18n="portfolio_subtitle">A quick look at quality outcomes our clients expect on every project.</p>
-                <div class="portfolio-grid">
+                <p class="section-subtitle" data-i18n="portfolio_subtitle">A real look at the preparation, protection, and craftsmanship behind every project.</p>
+                <div class="portfolio-grid" id="portfolio-grid">
                     <article class="portfolio-card" data-reveal>
                         <img
-                            src="./Axels%20Photos/IMG_2954.jpg"
+                            src="images/IMG_2954.jpg"
                             alt="Modern living room repaint project"
                             class="portfolio-image"
                             loading="lazy"
                             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80';"
                         >
                         <div class="portfolio-content">
-                            <h3 data-i18n="portfolio_1_title">Modern Living Room Refresh</h3>
-                            <p data-i18n="portfolio_1_desc">Neutral palette update with feature wall and premium eggshell finish.</p>
+                            <h3 data-i18n="portfolio_1_title">Hardwood Floor Refinishing</h3>
+                            <p data-i18n="portfolio_1_desc">Sanded, stained, and finished to a rich, durable shine — with railings and artwork protected throughout.</p>
                         </div>
                     </article>
                     <article class="portfolio-card" data-reveal>
                         <img
-                            src="./Axels%20Photos/IMG_2958.jpg"
+                            src="images/IMG_2958.jpg"
                             alt="Exterior home painting and curb appeal project"
                             class="portfolio-image"
                             loading="lazy"
                             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80';"
                         >
                         <div class="portfolio-content">
-                            <h3 data-i18n="portfolio_2_title">Exterior Curb Appeal Restoration</h3>
-                            <p data-i18n="portfolio_2_desc">Full façade repaint with trim detailing and weather-resistant coatings.</p>
+                            <h3 data-i18n="portfolio_2_title">Interior Repaint & Protection</h3>
+                            <p data-i18n="portfolio_2_desc">Every surface, window, and fixture is carefully masked before a wall is painted — clean edges, no overspray.</p>
                         </div>
                     </article>
                     <article class="portfolio-card" data-reveal>
                         <img
-                            src="./Axels%20Photos/IMG_2950.jpg"
+                            src="images/IMG_2950.jpg"
                             alt="Commercial office interior repaint"
                             class="portfolio-image"
                             loading="lazy"
                         >
                         <div class="portfolio-content">
-                            <h3 data-i18n="portfolio_3_title">Office Interior Rebrand</h3>
-                            <p data-i18n="portfolio_3_desc">Fast-turn commercial repaint coordinated around operational hours.</p>
+                            <h3 data-i18n="portfolio_3_title">Drywall Patch & Repair</h3>
+                            <p data-i18n="portfolio_3_desc">Damaged sections are cut, patched, and feathered smooth so the repair disappears once painted.</p>
                         </div>
                     </article>
                 </div>
@@ -282,9 +390,9 @@
                         <h2 class="section-title left" data-i18n="contact_title">Request Your Free Estimate</h2>
                         <p data-i18n="contact_desc">Tell us about your project and we will contact you with next steps within 24 hours.</p>
                         <ul class="contact-list">
-                            <li><strong data-i18n="contact_phone_label">Phone:</strong> (555) 123-4567</li>
-                            <li><strong data-i18n="contact_email_label">Email:</strong> hello@axelsgpr.com</li>
-                            <li><strong data-i18n="contact_location_label">Location:</strong> Your City, ST</li>
+                            <li><strong data-i18n="contact_phone_label">Phone:</strong> (513) 212-5179</li>
+                            <li><strong data-i18n="contact_email_label">Email:</strong> felixgervacio@gmail.com</li>
+                            <li><strong data-i18n="contact_location_label">Location:</strong> Cincinnati, OH</li>
                             <li><strong data-i18n="contact_hours_label">Hours:</strong> Mon-Sat, 8:00 AM - 6:00 PM</li>
                         </ul>
                     </div>

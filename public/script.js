@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('main section[id]');
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
+    const bookForm = document.getElementById('book-form');
+    const bookMessage = document.getElementById('book-message');
+    const portfolioGrid = document.getElementById('portfolio-grid');
     const assistantNudge = document.getElementById('assistant-nudge');
     const assistantNudgeClose = document.getElementById('assistant-nudge-close');
     const assistantToggle = document.getElementById('assistant-toggle');
@@ -20,8 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
         en: {
             nav_home: 'Home',
             nav_about: 'About',
+            nav_team: 'Team',
             nav_services: 'Services',
             nav_process: 'Process',
+            nav_book: 'Book a Visit',
             nav_portfolio: 'Portfolio',
             nav_faq: 'FAQ',
             nav_contact: 'Contact',
@@ -48,11 +53,34 @@ document.addEventListener('DOMContentLoaded', () => {
             about_desc_1: 'We help property owners transform interiors and exteriors with professional painting and finishing services. Our team focuses on preparation, precision, and dependable communication from day one.',
             about_desc_2: 'Whether you are updating one room or repainting an entire property, we manage every detail with respect for your space and a finish you can trust.',
             about_card_1_title: 'Service Areas',
-            about_card_1_desc: 'Residential and commercial projects across your city and surrounding neighborhoods.',
+            about_card_1_desc: 'We are based in Cincinnati, OH and serve the Tri-County area as well.',
             about_card_2_title: 'Working Hours',
             about_card_2_desc: 'Monday to Saturday: 8:00 AM - 6:00 PM',
             about_card_3_title: 'Estimate Policy',
             about_card_3_desc: 'Free on-site or virtual estimates with scope, timeline, and product recommendations.',
+            team_eyebrow: 'Meet the Team',
+            team_title: 'The Face Behind the Finish',
+            team_subtitle: 'Real craftsmanship starts with someone who stands behind every job.',
+            team_1_name: 'Felix Gervacio',
+            team_1_role: 'Owner & Lead Painter',
+            team_1_bio: 'Felix leads every AXEL\'S GPR project personally, from the first walkthrough to the final coat. With a hands-on approach and an eye for detail, he makes sure each space gets the same care he\'d give his own home.',
+            book_eyebrow: 'Schedule Now',
+            book_title: 'Book Your Free On-Site Visit',
+            book_desc: 'Pick a date and time that works for you and we will confirm your free on-site estimate visit.',
+            book_form_date: 'Preferred Date',
+            book_form_time: 'Preferred Time',
+            book_time_select: 'Select a time',
+            book_time_1: 'Morning (9 AM - 11 AM)',
+            book_time_2: 'Midday (11 AM - 1 PM)',
+            book_time_3: 'Afternoon (1 PM - 3 PM)',
+            book_time_4: 'Late Afternoon (3 PM - 5 PM)',
+            book_form_notes: 'Notes (optional)',
+            book_notes_placeholder: 'Anything we should know before we arrive?',
+            book_form_submit: 'Confirm Booking',
+            book_form_success: 'Thank you! Your visit request has been received. We will confirm shortly.',
+            book_form_error: 'Please complete all required fields with a valid email and a future date.',
+            ba_before: 'Before',
+            ba_after: 'After',
             services_title: 'Our Services',
             services_subtitle: 'Complete painting and finishing solutions designed for long-term results.',
             service_1_title: 'Interior Painting',
@@ -76,14 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
             process_3_desc: 'Professional application methods with premium paint systems.',
             process_4_title: 'Final Walkthrough',
             process_4_desc: 'Comprehensive quality check and touch-ups before final approval.',
+            process_photo_caption: 'Every repair is patched, sanded, and primed before a single coat goes on.',
             portfolio_title: 'Recent Projects',
-            portfolio_subtitle: 'A quick look at quality outcomes our clients expect on every project.',
-            portfolio_1_title: 'Modern Living Room Refresh',
-            portfolio_1_desc: 'Neutral palette update with feature wall and premium eggshell finish.',
-            portfolio_2_title: 'Exterior Curb Appeal Restoration',
-            portfolio_2_desc: 'Full façade repaint with trim detailing and weather-resistant coatings.',
-            portfolio_3_title: 'Office Interior Rebrand',
-            portfolio_3_desc: 'Fast-turn commercial repaint coordinated around operational hours.',
+            portfolio_subtitle: 'A real look at the preparation, protection, and craftsmanship behind every project.',
+            portfolio_1_title: 'Hardwood Floor Refinishing',
+            portfolio_1_desc: 'Sanded, stained, and finished to a rich, durable shine — with railings and artwork protected throughout.',
+            portfolio_2_title: 'Interior Repaint & Protection',
+            portfolio_2_desc: 'Every surface, window, and fixture is carefully masked before a wall is painted — clean edges, no overspray.',
+            portfolio_3_title: 'Drywall Patch & Repair',
+            portfolio_3_desc: 'Damaged sections are cut, patched, and feathered smooth so the repair disappears once painted.',
             testimonials_title: 'What Clients Say',
             testimonial_1_text: '"The crew was punctual, respectful, and detail-oriented. The finish quality exceeded our expectations."',
             testimonial_1_name: '— Residential Client',
@@ -127,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_portfolio: 'Portfolio',
             footer_contact: 'Contact',
             footer_contact_title: 'Contact',
-            footer_city: 'Your City, ST',
+            footer_city: 'Cincinnati, OH',
             footer_copy: '© 2026 AXEL\'S GPR. All rights reserved.',
             assistant_title: 'Axel\'s AI Assistant',
             assistant_subtitle: 'Quick answers about services, pricing, and scheduling.',
@@ -142,8 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
         es: {
             nav_home: 'Inicio',
             nav_about: 'Nosotros',
+            nav_team: 'Equipo',
             nav_services: 'Servicios',
             nav_process: 'Proceso',
+            nav_book: 'Agendar Visita',
             nav_portfolio: 'Portafolio',
             nav_faq: 'Preguntas',
             nav_contact: 'Contacto',
@@ -170,11 +201,34 @@ document.addEventListener('DOMContentLoaded', () => {
             about_desc_1: 'Ayudamos a propietarios a transformar interiores y exteriores con servicios profesionales de pintura y acabados. Nuestro equipo prioriza preparación, precisión y comunicación confiable desde el primer día.',
             about_desc_2: 'Ya sea una sola habitación o una propiedad completa, cuidamos cada detalle con respeto por su espacio y un acabado de confianza.',
             about_card_1_title: 'Zonas de Servicio',
-            about_card_1_desc: 'Proyectos residenciales y comerciales en su ciudad y zonas cercanas.',
+            about_card_1_desc: 'Estamos en Cincinnati, OH y también damos servicio al área de Tri-County.',
             about_card_2_title: 'Horario',
             about_card_2_desc: 'Lunes a Sábado: 8:00 AM - 6:00 PM',
             about_card_3_title: 'Política de Cotización',
             about_card_3_desc: 'Cotizaciones gratis en sitio o virtuales con alcance, tiempo y recomendaciones.',
+            team_eyebrow: 'Conoce al Equipo',
+            team_title: 'La Cara Detrás del Acabado',
+            team_subtitle: 'La calidad real comienza con alguien que respalda cada trabajo.',
+            team_1_name: 'Felix Gervacio',
+            team_1_role: 'Dueño y Pintor Principal',
+            team_1_bio: 'Felix dirige personalmente cada proyecto de AXEL\'S GPR, desde la primera visita hasta la última capa. Con un enfoque práctico y atención al detalle, se asegura de que cada espacio reciba el mismo cuidado que le daría a su propia casa.',
+            book_eyebrow: 'Agenda Ahora',
+            book_title: 'Agenda Tu Visita Gratis',
+            book_desc: 'Elige una fecha y hora que te convenga y confirmaremos tu visita de cotización gratis.',
+            book_form_date: 'Fecha Preferida',
+            book_form_time: 'Hora Preferida',
+            book_time_select: 'Selecciona una hora',
+            book_time_1: 'Mañana (9 AM - 11 AM)',
+            book_time_2: 'Mediodía (11 AM - 1 PM)',
+            book_time_3: 'Tarde (1 PM - 3 PM)',
+            book_time_4: 'Tarde Noche (3 PM - 5 PM)',
+            book_form_notes: 'Notas (opcional)',
+            book_notes_placeholder: '¿Algo que debamos saber antes de llegar?',
+            book_form_submit: 'Confirmar Cita',
+            book_form_success: '¡Gracias! Hemos recibido tu solicitud de visita. Confirmaremos pronto.',
+            book_form_error: 'Completa todos los campos requeridos con un correo válido y una fecha futura.',
+            ba_before: 'Antes',
+            ba_after: 'Después',
             services_title: 'Nuestros Servicios',
             services_subtitle: 'Soluciones completas de pintura y acabado diseñadas para durar.',
             service_1_title: 'Pintura Interior',
@@ -198,14 +252,15 @@ document.addEventListener('DOMContentLoaded', () => {
             process_3_desc: 'Métodos profesionales de aplicación con sistemas de pintura premium.',
             process_4_title: 'Revisión Final',
             process_4_desc: 'Control de calidad completo y retoques antes de la aprobación final.',
+            process_photo_caption: 'Cada reparación se parcha, lija y prepara con primer antes de aplicar la primera capa.',
             portfolio_title: 'Proyectos Recientes',
-            portfolio_subtitle: 'Una vista rápida de los resultados de calidad que ofrecemos en cada proyecto.',
-            portfolio_1_title: 'Renovación de Sala Moderna',
-            portfolio_1_desc: 'Actualización de paleta neutra con muro de acento y acabado eggshell premium.',
-            portfolio_2_title: 'Restauración Exterior',
-            portfolio_2_desc: 'Repintado total de fachada con detalles en molduras y recubrimiento resistente.',
-            portfolio_3_title: 'Renovación de Oficina',
-            portfolio_3_desc: 'Repintado comercial rápido coordinado con horarios de operación.',
+            portfolio_subtitle: 'Una mirada real a la preparación, protección y calidad detrás de cada proyecto.',
+            portfolio_1_title: 'Restauración de Pisos de Madera',
+            portfolio_1_desc: 'Lijado, teñido y acabado con un brillo duradero, protegiendo barandillas y obras de arte durante todo el proceso.',
+            portfolio_2_title: 'Repintado Interior y Protección',
+            portfolio_2_desc: 'Cada superficie, ventana y accesorio se cubre cuidadosamente antes de pintar — bordes limpios, sin salpicaduras.',
+            portfolio_3_title: 'Reparación de Drywall',
+            portfolio_3_desc: 'Las secciones dañadas se cortan, parchan y nivelan para que la reparación desaparezca una vez pintada.',
             testimonials_title: 'Lo Que Dicen Nuestros Clientes',
             testimonial_1_text: '"El equipo fue puntual, respetuoso y detallista. La calidad final superó nuestras expectativas."',
             testimonial_1_name: '— Cliente Residencial',
@@ -249,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_portfolio: 'Portafolio',
             footer_contact: 'Contacto',
             footer_contact_title: 'Contacto',
-            footer_city: 'Tu Ciudad, ST',
+            footer_city: 'Cincinnati, OH',
             footer_copy: '© 2026 AXEL\'S GPR. Todos los derechos reservados.',
             assistant_title: 'Axel\'s AI Assistant',
             assistant_subtitle: 'Respuestas rapidas sobre servicios, precios y agenda.',
@@ -537,6 +592,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const contactSubmitBtn = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
+    const contactSubmitDefaultText = contactSubmitBtn ? contactSubmitBtn.textContent : '';
+    const sendingLabel = { en: 'Sending…', es: 'Enviando…' };
+
     if (contactForm && formMessage) {
         contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
@@ -568,6 +627,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: fields[4].value.trim()
             };
 
+            if (contactSubmitBtn) {
+                contactSubmitBtn.disabled = true;
+                contactSubmitBtn.textContent = sendingLabel[currentLang] || sendingLabel.en;
+            }
+            formMessage.textContent = '';
+            formMessage.classList.remove('success', 'error');
+
             try {
                 const response = await fetch('/api/estimates', {
                     method: 'POST',
@@ -589,8 +655,213 @@ document.addEventListener('DOMContentLoaded', () => {
                 formMessage.textContent = translations[currentLang].form_error;
                 formMessage.classList.remove('success');
                 formMessage.classList.add('error');
+            } finally {
+                if (contactSubmitBtn) {
+                    contactSubmitBtn.disabled = false;
+                    contactSubmitBtn.textContent = contactSubmitDefaultText;
+                }
             }
         });
+    }
+
+    const bookSubmitBtn = bookForm ? bookForm.querySelector('button[type="submit"]') : null;
+    const bookSubmitDefaultText = bookSubmitBtn ? bookSubmitBtn.textContent : '';
+
+    if (bookForm && bookMessage) {
+        const dateField = bookForm.querySelector('#book-date');
+        if (dateField) {
+            dateField.min = new Date().toISOString().split('T')[0];
+        }
+
+        bookForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const fields = [
+                bookForm.querySelector('#book-name'),
+                bookForm.querySelector('#book-phone'),
+                bookForm.querySelector('#book-email'),
+                bookForm.querySelector('#book-service'),
+                bookForm.querySelector('#book-date'),
+                bookForm.querySelector('#book-time')
+            ];
+
+            const hasEmptyField = fields.some((field) => !field || !field.value.trim());
+            const emailField = bookForm.querySelector('#book-email');
+            const emailIsValid = emailField ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim()) : false;
+
+            if (hasEmptyField || !emailIsValid) {
+                bookMessage.textContent = translations[currentLang].book_form_error;
+                bookMessage.classList.remove('success');
+                bookMessage.classList.add('error');
+                return;
+            }
+
+            const payload = {
+                name: fields[0].value.trim(),
+                phone: fields[1].value.trim(),
+                email: fields[2].value.trim(),
+                service: fields[3].value.trim(),
+                preferredDate: fields[4].value,
+                timeSlot: fields[5].value,
+                notes: bookForm.querySelector('#book-notes')
+                    ? bookForm.querySelector('#book-notes').value.trim()
+                    : ''
+            };
+
+            if (bookSubmitBtn) {
+                bookSubmitBtn.disabled = true;
+                bookSubmitBtn.textContent = sendingLabel[currentLang] || sendingLabel.en;
+            }
+            bookMessage.textContent = '';
+            bookMessage.classList.remove('success', 'error');
+
+            try {
+                const response = await fetch('/api/bookings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to submit booking');
+                }
+
+                bookMessage.textContent = translations[currentLang].book_form_success;
+                bookMessage.classList.remove('error');
+                bookMessage.classList.add('success');
+                bookForm.reset();
+                if (dateField) {
+                    dateField.min = new Date().toISOString().split('T')[0];
+                }
+            } catch (_error) {
+                bookMessage.textContent = translations[currentLang].book_form_error;
+                bookMessage.classList.remove('success');
+                bookMessage.classList.add('error');
+            } finally {
+                if (bookSubmitBtn) {
+                    bookSubmitBtn.disabled = false;
+                    bookSubmitBtn.textContent = bookSubmitDefaultText;
+                }
+            }
+        });
+    }
+
+    const buildBaSlider = (item) => {
+        const article = document.createElement('article');
+        article.className = 'portfolio-card';
+        article.setAttribute('data-reveal', '');
+
+        const slider = document.createElement('div');
+        slider.className = 'ba-slider';
+        slider.innerHTML = `
+            <span class="ba-tag ba-tag-before">${translations[currentLang].ba_before}</span>
+            <span class="ba-tag ba-tag-after">${translations[currentLang].ba_after}</span>
+            <img class="ba-after" src="${item.afterImage}" alt="${item.title} — after">
+            <img class="ba-before" src="${item.beforeImage}" alt="${item.title} — before">
+            <span class="ba-divider" aria-hidden="true"></span>
+            <span class="ba-handle" aria-hidden="true">⇔</span>
+            <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Drag to compare before and after photos">
+        `;
+
+        const range = slider.querySelector('.ba-range');
+        range.addEventListener('input', () => {
+            slider.style.setProperty('--ba-pos', `${range.value}%`);
+        });
+
+        const content = document.createElement('div');
+        content.className = 'portfolio-content';
+        content.innerHTML = `
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(item.description || '')}</p>
+        `;
+
+        article.appendChild(slider);
+        article.appendChild(content);
+        return article;
+    };
+
+    const escapeHtml = (value) => String(value == null ? '' : value).replace(/[&<>"']/g, (ch) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    }[ch]));
+
+    const loadGallery = async () => {
+        if (!portfolioGrid) {
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/gallery');
+            if (!response.ok) {
+                return;
+            }
+
+            const payload = await response.json();
+            const items = Array.isArray(payload.data) ? payload.data : [];
+            if (items.length === 0) {
+                return;
+            }
+
+            portfolioGrid.innerHTML = '';
+            items.forEach((item) => {
+                portfolioGrid.appendChild(buildBaSlider(item));
+            });
+
+            portfolioGrid.querySelectorAll('[data-reveal]').forEach((element) => {
+                element.classList.add('is-visible');
+            });
+        } catch (_error) {
+            // Keep the static fallback cards in place if the gallery can't be loaded.
+        }
+    };
+
+    loadGallery();
+
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if (statNumbers.length > 0) {
+        const animateCount = (element) => {
+            const raw = element.textContent.trim();
+            const match = raw.match(/^(\d+)(.*)$/);
+            if (!match) {
+                return;
+            }
+
+            const target = parseInt(match[1], 10);
+            const suffix = match[2];
+            const duration = 1200;
+            const startTime = performance.now();
+
+            const tick = (now) => {
+                const progress = Math.min((now - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                element.textContent = `${Math.round(target * eased)}${suffix}`;
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                }
+            };
+
+            requestAnimationFrame(tick);
+        };
+
+        if ('IntersectionObserver' in window) {
+            const statObserver = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            animateCount(entry.target);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.6 }
+            );
+            statNumbers.forEach((element) => statObserver.observe(element));
+        }
     }
 
     const revealElements = document.querySelectorAll('[data-reveal]');

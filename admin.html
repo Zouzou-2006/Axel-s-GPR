@@ -3,89 +3,283 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AXEL'S GPR Admin Dashboard</title>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Dashboard | AXEL'S GPR</title>
+  <meta name="theme-color" content="#e8613c">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23e8613c'/%3E%3Ctext x='32' y='43' font-family='Georgia, serif' font-size='34' font-weight='700' fill='%23f2a93b' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #f5f8fb;
-      --surface: #ffffff;
-      --text: #142234;
-      --muted: #55677a;
-      --line: #d9e3ee;
-      --brand: #0f6d63;
-      --brand-deep: #0b5049;
-      --danger: #9b2230;
-      --radius: 16px;
-      --shadow: 0 12px 30px rgba(18, 34, 52, 0.1);
-    }
-
     * {
       box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #f8f3eb;
+      --ink: #111827;
+      --muted: #55677a;
+      --surface: #ffffff;
+      --line: #e8ddd0;
+      --brand: #e8613c;
+      --brand-deep: #b8431f;
+      --accent: #f2a93b;
+      --accent-soft: #fdeedc;
+      --danger: #9b2230;
+      --danger-soft: #fbe9ea;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --shadow-soft: 0 14px 34px rgba(26, 32, 44, 0.08);
+      --shadow-strong: 0 24px 56px rgba(17, 24, 39, 0.14);
     }
 
     body {
       margin: 0;
       font-family: 'Manrope', 'Segoe UI', sans-serif;
-      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
-      color: var(--text);
+      line-height: 1.6;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 0%, #fcefdc 0%, transparent 34%),
+        radial-gradient(circle at 92% 4%, #fdf1de 0%, transparent 32%),
+        var(--bg);
     }
 
-    .container {
+    a {
+      color: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 251, 245, 0.86);
+      border-bottom: 1px solid rgba(242, 169, 59, 0.16);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
       width: min(1180px, 92%);
       margin: 0 auto;
-      padding: 28px 0 40px;
-    }
-
-    .topbar {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: var(--accent);
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.18rem;
+      color: #7a2712;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #b8431f;
+      background: rgba(232, 97, 52, 0.12);
+      border: 1px solid rgba(232, 97, 52, 0.18);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
     }
 
     .title {
       margin: 0;
-      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
       letter-spacing: -0.01em;
     }
 
     .subtitle {
-      margin: 4px 0 0;
+      margin: 6px 0 0;
       color: var(--muted);
       font-size: 0.94rem;
-    }
-
-    .actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
     }
 
     .btn {
       border: 0;
       border-radius: 999px;
-      padding: 10px 16px;
-      font-size: 0.9rem;
+      padding: 11px 20px;
+      font-size: 0.88rem;
       font-weight: 700;
       cursor: pointer;
       color: #fff;
-      background: linear-gradient(120deg, var(--brand) 0%, #178275 100%);
-      box-shadow: 0 10px 20px rgba(15, 109, 99, 0.24);
-      transition: transform 0.2s ease;
+      background: linear-gradient(120deg, var(--brand) 0%, #f2794f 100%);
+      box-shadow: 0 10px 20px rgba(232, 97, 52, 0.24);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .btn:hover {
       transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(232, 97, 52, 0.3);
+    }
+
+    .btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-danger {
+      background: linear-gradient(120deg, var(--danger) 0%, #c1414f 100%);
+      box-shadow: 0 10px 20px rgba(155, 34, 48, 0.22);
+      padding: 8px 14px;
+      font-size: 0.78rem;
+    }
+
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-top-color: #fff;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.86rem;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      border-color: rgba(232, 97, 52, 0.4);
+      color: var(--brand-deep);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(120deg, var(--brand) 0%, #f2794f 100%);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(232, 97, 52, 0.24);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stat-card .n {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.7rem;
+      color: #b8431f;
+      line-height: 1.1;
+    }
+
+    .stat-card .l {
+      margin-top: 4px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
     }
 
     .status {
       margin-bottom: 14px;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22946a;
+      flex-shrink: 0;
+    }
+
+    .status.error .status-dot {
+      background: var(--danger);
     }
 
     .status.error {
@@ -96,8 +290,8 @@
     .card {
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-strong);
       overflow: hidden;
     }
 
@@ -114,98 +308,507 @@
     th,
     td {
       text-align: left;
-      padding: 12px 14px;
-      border-bottom: 1px solid #ecf2f8;
+      padding: 14px 16px;
+      border-bottom: 1px solid #f0e9dd;
       vertical-align: top;
       font-size: 0.9rem;
     }
 
     th {
-      font-size: 0.78rem;
-      color: #27425c;
-      letter-spacing: 0.05em;
+      font-size: 0.74rem;
+      color: #274538;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: #f7fbff;
+      background: #fbf7f0;
       position: sticky;
       top: 0;
       z-index: 1;
     }
 
+    tbody tr {
+      transition: background 0.15s ease;
+    }
+
     tbody tr:hover {
-      background: #f9fcff;
+      background: #fbfdfc;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
     }
 
     .pill {
       display: inline-block;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: 999px;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 700;
       color: #145851;
       background: #e9f8f5;
       border: 1px solid #bfe8e1;
+      white-space: nowrap;
+    }
+
+    .status-select {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .status-select.pending {
+      color: #9a5b12;
+      border-color: #f0d2bc;
+      background: var(--accent-soft);
+    }
+
+    .status-select.confirmed {
+      color: #145851;
+      border-color: #bfe8e1;
+      background: #e9f8f5;
+    }
+
+    .status-select.cancelled {
+      color: var(--danger);
+      border-color: #f3c9cd;
+      background: var(--danger-soft);
     }
 
     .mono {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.82rem;
-      color: #324960;
+      font-size: 0.8rem;
+      color: #4b5d70;
     }
 
-    .empty {
-      padding: 24px;
+    .name-cell {
+      font-weight: 700;
+      color: #172336;
+    }
+
+    .empty,
+    .loading-state {
+      padding: 64px 24px;
       text-align: center;
       color: var(--muted);
     }
 
+    .empty .empty-icon,
+    .loading-state .loading-icon {
+      width: 46px;
+      height: 46px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8a4a0c;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.3rem;
+    }
+
+    .loading-state .loading-icon {
+      border: 3px solid var(--accent-soft);
+      border-top-color: var(--accent);
+      animation: spin 0.8s linear infinite;
+      background: transparent;
+    }
+
+    .empty p,
+    .loading-state p {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .card-list {
+      display: none;
+    }
+
+    .gallery-upload {
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+      background: #fffdf8;
+    }
+
+    .gallery-upload h2 {
+      margin: 0 0 4px;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.2rem;
+    }
+
+    .gallery-upload p.hint {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .upload-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .upload-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .upload-grid label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.84rem;
+      margin-bottom: 6px;
+    }
+
+    .upload-grid input,
+    .upload-grid textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+      background: #fff;
+    }
+
+    .upload-status {
+      margin-top: 12px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      min-height: 18px;
+    }
+
+    .upload-status.success {
+      color: #0a684b;
+    }
+
+    .upload-status.error {
+      color: var(--danger);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      padding: 22px;
+    }
+
+    .gallery-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #fffdf8;
+    }
+
+    .gallery-item-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery-item-images img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item-body {
+      padding: 12px 14px;
+    }
+
+    .gallery-item-body h3 {
+      margin: 0 0 4px;
+      font-size: 0.98rem;
+      font-family: 'Fraunces', Georgia, serif;
+    }
+
+    .gallery-item-body p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner,
+      .loading-state .loading-icon {
+        animation: none;
+      }
+    }
+
     @media (max-width: 760px) {
       .container {
-        padding-top: 20px;
+        padding-top: 26px;
       }
 
       .subtitle {
-        font-size: 0.88rem;
+        font-size: 0.86rem;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .stat-card {
+        padding: 12px;
+      }
+
+      .stat-card .n {
+        font-size: 1.25rem;
+      }
+
+      .stat-card .l {
+        font-size: 0.7rem;
+      }
+
+      .upload-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .table-wrap {
+        display: none;
+      }
+
+      .card-list {
+        display: grid;
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .entry-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 16px;
+        background: #fffdf8;
+      }
+
+      .entry-card .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 6px 0;
+        border-bottom: 1px dashed #ecdfc9;
+        font-size: 0.86rem;
+      }
+
+      .entry-card .row:last-child {
+        border-bottom: 0;
+      }
+
+      .entry-card .row .k {
+        color: var(--muted);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .entry-card .row .v {
+        text-align: right;
+      }
+
+      .entry-card .message-row {
+        flex-direction: column;
+        text-align: left;
+      }
+
+      .entry-card .message-row .v {
+        text-align: left;
+        margin-top: 4px;
       }
     }
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="AXEL'S GPR Home">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span class="brand-text">AXEL'S GPR</span>
+      </a>
+      <span class="badge">Admin Dashboard</span>
+    </div>
+  </header>
+
   <main class="container">
-    <header class="topbar">
+    <div class="topbar">
       <div>
-        <h1 class="title">AXEL'S GPR Admin</h1>
-        <p class="subtitle">Recent estimate requests from your website contact form.</p>
+        <h1 class="title" id="page-title">Estimate Requests</h1>
+        <p class="subtitle" id="page-subtitle">Recent quote requests submitted from your website contact form.</p>
       </div>
-      <div class="actions">
-        <button class="btn" id="refresh-btn" type="button">Refresh</button>
+      <button class="btn" id="refresh-btn" type="button">
+        <span id="refresh-btn-label">Refresh</span>
+      </button>
+    </div>
+
+    <nav class="tab-bar" aria-label="Dashboard sections">
+      <button class="tab-btn active" type="button" data-tab="estimates">Estimates</button>
+      <button class="tab-btn" type="button" data-tab="bookings">Bookings</button>
+      <button class="tab-btn" type="button" data-tab="gallery">Gallery</button>
+    </nav>
+
+    <!-- Estimates tab -->
+    <section class="tab-panel active" id="panel-estimates">
+      <div class="stats-row" id="est-stats-row" hidden>
+        <div class="stat-card">
+          <div class="n" id="est-stat-total">0</div>
+          <div class="l">Total Loaded</div>
+        </div>
+        <div class="stat-card">
+          <div class="n" id="est-stat-today">0</div>
+          <div class="l">Submitted Today</div>
+        </div>
+        <div class="stat-card">
+          <div class="n" id="est-stat-latest">-</div>
+          <div class="l">Most Requested Service</div>
+        </div>
       </div>
-    </header>
 
-    <p id="status" class="status">Loading submissions...</p>
+      <p id="est-status" class="status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="est-status-text">Loading submissions…</span>
+      </p>
 
-    <section class="card table-wrap" aria-label="Estimate requests table">
-      <table>
-        <thead>
-          <tr>
-            <th>Submitted</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Service</th>
-            <th>Message</th>
-          </tr>
-        </thead>
-        <tbody id="rows"></tbody>
-      </table>
-      <div id="empty-state" class="empty" hidden>No submissions yet.</div>
+      <section class="card" aria-label="Estimate requests">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Submitted</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Service</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody id="est-rows"></tbody>
+          </table>
+        </div>
+        <div class="card-list" id="est-card-list"></div>
+        <div id="est-loading-state" class="loading-state">
+          <div class="loading-icon" aria-hidden="true"></div>
+          <p>Loading submissions…</p>
+        </div>
+        <div id="est-empty-state" class="empty" hidden>
+          <div class="empty-icon" aria-hidden="true">✓</div>
+          <p>No submissions yet</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- Bookings tab -->
+    <section class="tab-panel" id="panel-bookings">
+      <div class="stats-row" id="book-stats-row" hidden>
+        <div class="stat-card">
+          <div class="n" id="book-stat-total">0</div>
+          <div class="l">Total Loaded</div>
+        </div>
+        <div class="stat-card">
+          <div class="n" id="book-stat-pending">0</div>
+          <div class="l">Pending</div>
+        </div>
+        <div class="stat-card">
+          <div class="n" id="book-stat-latest">-</div>
+          <div class="l">Most Requested Service</div>
+        </div>
+      </div>
+
+      <p id="book-status" class="status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="book-status-text">Loading bookings…</span>
+      </p>
+
+      <section class="card" aria-label="Bookings">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Preferred Visit</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Service</th>
+                <th>Notes</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="book-rows"></tbody>
+          </table>
+        </div>
+        <div class="card-list" id="book-card-list"></div>
+        <div id="book-loading-state" class="loading-state">
+          <div class="loading-icon" aria-hidden="true"></div>
+          <p>Loading bookings…</p>
+        </div>
+        <div id="book-empty-state" class="empty" hidden>
+          <div class="empty-icon" aria-hidden="true">✓</div>
+          <p>No bookings yet</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- Gallery tab -->
+    <section class="tab-panel" id="panel-gallery">
+      <section class="card" aria-label="Before and after gallery">
+        <form class="gallery-upload" id="gallery-form">
+          <h2>Add Before &amp; After Photos</h2>
+          <p class="hint">Upload a matched pair — these appear as a drag-to-compare slider on the public Portfolio section.</p>
+          <div class="upload-grid">
+            <div class="full">
+              <label for="gallery-title">Project Title</label>
+              <input type="text" id="gallery-title" name="title" required maxlength="120" placeholder="e.g. Living Room Repaint">
+            </div>
+            <div class="full">
+              <label for="gallery-description">Description (optional)</label>
+              <textarea id="gallery-description" name="description" rows="2" maxlength="500" placeholder="A short line about the project"></textarea>
+            </div>
+            <div>
+              <label for="gallery-before">Before Photo</label>
+              <input type="file" id="gallery-before" name="beforeImage" accept="image/jpeg,image/png,image/webp" required>
+            </div>
+            <div>
+              <label for="gallery-after">After Photo</label>
+              <input type="file" id="gallery-after" name="afterImage" accept="image/jpeg,image/png,image/webp" required>
+            </div>
+            <div class="full">
+              <button class="btn" type="submit" id="gallery-submit-btn">
+                <span id="gallery-submit-label">Upload Pair</span>
+              </button>
+              <p id="gallery-upload-status" class="upload-status"></p>
+            </div>
+          </div>
+        </form>
+
+        <div id="gallery-loading-state" class="loading-state">
+          <div class="loading-icon" aria-hidden="true"></div>
+          <p>Loading gallery…</p>
+        </div>
+        <div id="gallery-empty-state" class="empty" hidden>
+          <div class="empty-icon" aria-hidden="true">✓</div>
+          <p>No gallery items yet</p>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </section>
     </section>
   </main>
 
   <script>
-    const rows = document.getElementById('rows');
-    const status = document.getElementById('status');
-    const refreshBtn = document.getElementById('refresh-btn');
-    const emptyState = document.getElementById('empty-state');
+    const escapeHtml = (value) => String(value == null ? '' : value).replace(/[&<>"']/g, (ch) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[ch]));
 
     const formatDate = (value) => {
       const date = new Date(value);
@@ -222,57 +825,438 @@
       }).format(date);
     };
 
-    const renderRows = (items) => {
-      rows.innerHTML = '';
+    const formatDateOnly = (value) => {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        return '-';
+      }
 
+      return new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit'
+      }).format(date);
+    };
+
+    /* ---------- Tabs ---------- */
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    const pageTitle = document.getElementById('page-title');
+    const pageSubtitle = document.getElementById('page-subtitle');
+    const refreshBtn = document.getElementById('refresh-btn');
+    const refreshBtnLabel = document.getElementById('refresh-btn-label');
+
+    const tabMeta = {
+      estimates: {
+        title: 'Estimate Requests',
+        subtitle: 'Recent quote requests submitted from your website contact form.',
+        load: () => loadEstimates()
+      },
+      bookings: {
+        title: 'Booking Requests',
+        subtitle: 'Free on-site visit requests submitted from the Book a Visit section.',
+        load: () => loadBookings()
+      },
+      gallery: {
+        title: 'Before & After Gallery',
+        subtitle: 'Upload project photo pairs to power the portfolio slider on your site.',
+        load: () => loadGallery()
+      }
+    };
+
+    let activeTab = 'estimates';
+
+    const setActiveTab = (tab) => {
+      activeTab = tab;
+      tabButtons.forEach((btn) => btn.classList.toggle('active', btn.dataset.tab === tab));
+      tabPanels.forEach((panel) => panel.classList.toggle('active', panel.id === `panel-${tab}`));
+      pageTitle.textContent = tabMeta[tab].title;
+      pageSubtitle.textContent = tabMeta[tab].subtitle;
+    };
+
+    const loadedTabs = new Set();
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        setActiveTab(tab);
+        if (!loadedTabs.has(tab)) {
+          loadedTabs.add(tab);
+          tabMeta[tab].load();
+        }
+      });
+    });
+
+    refreshBtn.addEventListener('click', () => tabMeta[activeTab].load());
+
+    /* ---------- Estimates ---------- */
+    const estRowsEl = document.getElementById('est-rows');
+    const estCardListEl = document.getElementById('est-card-list');
+    const estStatusEl = document.getElementById('est-status');
+    const estStatusTextEl = document.getElementById('est-status-text');
+    const estEmptyState = document.getElementById('est-empty-state');
+    const estLoadingState = document.getElementById('est-loading-state');
+    const estStatsRow = document.getElementById('est-stats-row');
+    const estStatTotal = document.getElementById('est-stat-total');
+    const estStatToday = document.getElementById('est-stat-today');
+    const estStatLatest = document.getElementById('est-stat-latest');
+
+    const updateEstStats = (items) => {
       if (!items.length) {
-        emptyState.hidden = false;
+        estStatsRow.hidden = true;
         return;
       }
 
-      emptyState.hidden = true;
+      estStatsRow.hidden = false;
+      estStatTotal.textContent = String(items.length);
+
+      const todayKey = new Date().toDateString();
+      const todayCount = items.filter((item) => {
+        const date = new Date(item.createdAt);
+        return !Number.isNaN(date.getTime()) && date.toDateString() === todayKey;
+      }).length;
+      estStatToday.textContent = String(todayCount);
+
+      const counts = {};
+      items.forEach((item) => {
+        const key = item.service || 'Other';
+        counts[key] = (counts[key] || 0) + 1;
+      });
+      const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+      estStatLatest.textContent = top ? top[0] : '-';
+    };
+
+    const renderEstimateRows = (items) => {
+      estRowsEl.innerHTML = '';
+      estCardListEl.innerHTML = '';
+      estLoadingState.hidden = true;
+
+      if (!items.length) {
+        estEmptyState.hidden = false;
+        updateEstStats(items);
+        return;
+      }
+
+      estEmptyState.hidden = true;
 
       items.forEach((item) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="mono">${formatDate(item.createdAt)}</td>
-          <td>${item.name || '-'}</td>
-          <td>${item.phone || '-'}</td>
-          <td>${item.email || '-'}</td>
-          <td><span class="pill">${item.service || '-'}</span></td>
-          <td>${item.message || '-'}</td>
+          <td class="mono">${escapeHtml(formatDate(item.createdAt))}</td>
+          <td class="name-cell">${escapeHtml(item.name) || '-'}</td>
+          <td>${escapeHtml(item.phone) || '-'}</td>
+          <td>${escapeHtml(item.email) || '-'}</td>
+          <td><span class="pill">${escapeHtml(item.service) || '-'}</span></td>
+          <td>${escapeHtml(item.message) || '-'}</td>
         `;
-        rows.appendChild(tr);
+        estRowsEl.appendChild(tr);
+
+        const card = document.createElement('article');
+        card.className = 'entry-card';
+        card.innerHTML = `
+          <div class="row"><span class="k">Submitted</span><span class="v mono">${escapeHtml(formatDate(item.createdAt))}</span></div>
+          <div class="row"><span class="k">Name</span><span class="v name-cell">${escapeHtml(item.name) || '-'}</span></div>
+          <div class="row"><span class="k">Phone</span><span class="v">${escapeHtml(item.phone) || '-'}</span></div>
+          <div class="row"><span class="k">Email</span><span class="v">${escapeHtml(item.email) || '-'}</span></div>
+          <div class="row"><span class="k">Service</span><span class="v"><span class="pill">${escapeHtml(item.service) || '-'}</span></span></div>
+          <div class="row message-row"><span class="k">Message</span><span class="v">${escapeHtml(item.message) || '-'}</span></div>
+        `;
+        estCardListEl.appendChild(card);
       });
+
+      updateEstStats(items);
     };
 
-    const loadSubmissions = async () => {
-      status.classList.remove('error');
-      status.textContent = 'Loading submissions...';
+    const loadEstimates = async () => {
+      estStatusEl.classList.remove('error');
+      estStatusTextEl.textContent = 'Loading submissions…';
+      estLoadingState.hidden = false;
+      estEmptyState.hidden = true;
+      estRowsEl.innerHTML = '';
+      estCardListEl.innerHTML = '';
 
       try {
-        const response = await fetch('/api/admin/estimates?limit=120', {
-          credentials: 'same-origin'
-        });
-
+        const response = await fetch('/api/admin/estimates?limit=120', { credentials: 'same-origin' });
         if (!response.ok) {
           throw new Error('Unable to fetch submissions');
         }
 
         const payload = await response.json();
         const items = Array.isArray(payload.data) ? payload.data : [];
-
-        status.textContent = `Loaded ${items.length} submission(s).`;
-        renderRows(items);
+        estStatusTextEl.textContent = `Loaded ${items.length} submission${items.length === 1 ? '' : 's'}.`;
+        renderEstimateRows(items);
       } catch (_error) {
-        status.classList.add('error');
-        status.textContent = 'Could not load submissions. Check admin auth credentials and try again.';
-        renderRows([]);
+        estStatusEl.classList.add('error');
+        estStatusTextEl.textContent = 'Could not load submissions. Check admin auth credentials and try again.';
+        estLoadingState.hidden = true;
+        renderEstimateRows([]);
       }
     };
 
-    refreshBtn.addEventListener('click', loadSubmissions);
-    loadSubmissions();
+    /* ---------- Bookings ---------- */
+    const bookRowsEl = document.getElementById('book-rows');
+    const bookCardListEl = document.getElementById('book-card-list');
+    const bookStatusEl = document.getElementById('book-status');
+    const bookStatusTextEl = document.getElementById('book-status-text');
+    const bookEmptyState = document.getElementById('book-empty-state');
+    const bookLoadingState = document.getElementById('book-loading-state');
+    const bookStatsRow = document.getElementById('book-stats-row');
+    const bookStatTotal = document.getElementById('book-stat-total');
+    const bookStatPending = document.getElementById('book-stat-pending');
+    const bookStatLatest = document.getElementById('book-stat-latest');
+
+    const updateBookStats = (items) => {
+      if (!items.length) {
+        bookStatsRow.hidden = true;
+        return;
+      }
+
+      bookStatsRow.hidden = false;
+      bookStatTotal.textContent = String(items.length);
+      bookStatPending.textContent = String(items.filter((item) => item.status === 'pending').length);
+
+      const counts = {};
+      items.forEach((item) => {
+        const key = item.service || 'Other';
+        counts[key] = (counts[key] || 0) + 1;
+      });
+      const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+      bookStatLatest.textContent = top ? top[0] : '-';
+    };
+
+    const updateBookingStatus = async (id, status, selectEl) => {
+      const previous = selectEl.dataset.current;
+      selectEl.disabled = true;
+      try {
+        const response = await fetch(`/api/admin/bookings/${id}`, {
+          method: 'PATCH',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to update status');
+        }
+
+        selectEl.dataset.current = status;
+        selectEl.className = `status-select ${status}`;
+      } catch (_error) {
+        selectEl.value = previous;
+      } finally {
+        selectEl.disabled = false;
+      }
+    };
+
+    const buildStatusSelect = (item) => {
+      const select = document.createElement('select');
+      select.className = `status-select ${item.status}`;
+      select.dataset.current = item.status;
+      ['pending', 'confirmed', 'cancelled'].forEach((value) => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = value.charAt(0).toUpperCase() + value.slice(1);
+        option.selected = value === item.status;
+        select.appendChild(option);
+      });
+      select.addEventListener('change', () => updateBookingStatus(item._id, select.value, select));
+      return select;
+    };
+
+    const renderBookingRows = (items) => {
+      bookRowsEl.innerHTML = '';
+      bookCardListEl.innerHTML = '';
+      bookLoadingState.hidden = true;
+
+      if (!items.length) {
+        bookEmptyState.hidden = false;
+        updateBookStats(items);
+        return;
+      }
+
+      bookEmptyState.hidden = true;
+
+      items.forEach((item) => {
+        const visitLabel = `${escapeHtml(formatDateOnly(item.preferredDate))} · ${escapeHtml(item.timeSlot) || '-'}`;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="mono">${visitLabel}</td>
+          <td class="name-cell">${escapeHtml(item.name) || '-'}</td>
+          <td>${escapeHtml(item.phone) || '-'}</td>
+          <td>${escapeHtml(item.email) || '-'}</td>
+          <td><span class="pill">${escapeHtml(item.service) || '-'}</span></td>
+          <td>${escapeHtml(item.notes) || '-'}</td>
+          <td class="status-cell"></td>
+        `;
+        tr.querySelector('.status-cell').appendChild(buildStatusSelect(item));
+        bookRowsEl.appendChild(tr);
+
+        const card = document.createElement('article');
+        card.className = 'entry-card';
+        card.innerHTML = `
+          <div class="row"><span class="k">Visit</span><span class="v mono">${visitLabel}</span></div>
+          <div class="row"><span class="k">Name</span><span class="v name-cell">${escapeHtml(item.name) || '-'}</span></div>
+          <div class="row"><span class="k">Phone</span><span class="v">${escapeHtml(item.phone) || '-'}</span></div>
+          <div class="row"><span class="k">Email</span><span class="v">${escapeHtml(item.email) || '-'}</span></div>
+          <div class="row"><span class="k">Service</span><span class="v"><span class="pill">${escapeHtml(item.service) || '-'}</span></span></div>
+          <div class="row message-row"><span class="k">Notes</span><span class="v">${escapeHtml(item.notes) || '-'}</span></div>
+          <div class="row status-row"><span class="k">Status</span><span class="v status-cell"></span></div>
+        `;
+        card.querySelector('.status-cell').appendChild(buildStatusSelect(item));
+        bookCardListEl.appendChild(card);
+      });
+
+      updateBookStats(items);
+    };
+
+    const loadBookings = async () => {
+      bookStatusEl.classList.remove('error');
+      bookStatusTextEl.textContent = 'Loading bookings…';
+      bookLoadingState.hidden = false;
+      bookEmptyState.hidden = true;
+      bookRowsEl.innerHTML = '';
+      bookCardListEl.innerHTML = '';
+
+      try {
+        const response = await fetch('/api/admin/bookings?limit=200', { credentials: 'same-origin' });
+        if (!response.ok) {
+          throw new Error('Unable to fetch bookings');
+        }
+
+        const payload = await response.json();
+        const items = Array.isArray(payload.data) ? payload.data : [];
+        bookStatusTextEl.textContent = `Loaded ${items.length} booking${items.length === 1 ? '' : 's'}.`;
+        renderBookingRows(items);
+      } catch (_error) {
+        bookStatusEl.classList.add('error');
+        bookStatusTextEl.textContent = 'Could not load bookings. Check admin auth credentials and try again.';
+        bookLoadingState.hidden = true;
+        renderBookingRows([]);
+      }
+    };
+
+    /* ---------- Gallery ---------- */
+    const galleryForm = document.getElementById('gallery-form');
+    const gallerySubmitBtn = document.getElementById('gallery-submit-btn');
+    const gallerySubmitLabel = document.getElementById('gallery-submit-label');
+    const galleryUploadStatus = document.getElementById('gallery-upload-status');
+    const galleryGrid = document.getElementById('gallery-grid');
+    const galleryLoadingState = document.getElementById('gallery-loading-state');
+    const galleryEmptyState = document.getElementById('gallery-empty-state');
+
+    const deleteGalleryItem = async (id, itemEl) => {
+      if (!window.confirm('Delete this before/after pair? This cannot be undone.')) {
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/admin/gallery/${id}`, {
+          method: 'DELETE',
+          credentials: 'same-origin'
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to delete');
+        }
+
+        itemEl.remove();
+        if (!galleryGrid.children.length) {
+          galleryEmptyState.hidden = false;
+        }
+      } catch (_error) {
+        window.alert('Could not delete this item. Please try again.');
+      }
+    };
+
+    const renderGalleryItems = (items) => {
+      galleryGrid.innerHTML = '';
+      galleryLoadingState.hidden = true;
+
+      if (!items.length) {
+        galleryEmptyState.hidden = false;
+        return;
+      }
+
+      galleryEmptyState.hidden = true;
+
+      items.forEach((item) => {
+        const card = document.createElement('article');
+        card.className = 'gallery-item';
+        card.innerHTML = `
+          <div class="gallery-item-images">
+            <img src="/${escapeHtml(item.beforeImage)}" alt="${escapeHtml(item.title)} — before" loading="lazy">
+            <img src="/${escapeHtml(item.afterImage)}" alt="${escapeHtml(item.title)} — after" loading="lazy">
+          </div>
+          <div class="gallery-item-body">
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(item.description || '')}</p>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </div>
+        `;
+        card.querySelector('button').addEventListener('click', () => deleteGalleryItem(item._id, card));
+        galleryGrid.appendChild(card);
+      });
+    };
+
+    const loadGallery = async () => {
+      galleryLoadingState.hidden = false;
+      galleryEmptyState.hidden = true;
+      galleryGrid.innerHTML = '';
+
+      try {
+        const response = await fetch('/api/gallery');
+        if (!response.ok) {
+          throw new Error('Unable to fetch gallery');
+        }
+        const payload = await response.json();
+        const items = Array.isArray(payload.data) ? payload.data : [];
+        renderGalleryItems(items);
+      } catch (_error) {
+        galleryLoadingState.hidden = true;
+        renderGalleryItems([]);
+      }
+    };
+
+    if (galleryForm) {
+      galleryForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(galleryForm);
+        gallerySubmitBtn.disabled = true;
+        gallerySubmitLabel.textContent = 'Uploading…';
+        galleryUploadStatus.textContent = '';
+        galleryUploadStatus.classList.remove('success', 'error');
+
+        try {
+          const response = await fetch('/api/admin/gallery', {
+            method: 'POST',
+            credentials: 'same-origin',
+            body: formData
+          });
+
+          if (!response.ok) {
+            const payload = await response.json().catch(() => ({}));
+            throw new Error(payload.error || 'Upload failed');
+          }
+
+          galleryUploadStatus.textContent = 'Uploaded! It now appears on the public portfolio.';
+          galleryUploadStatus.classList.add('success');
+          galleryForm.reset();
+          loadGallery();
+        } catch (error) {
+          galleryUploadStatus.textContent = error.message || 'Upload failed. Please try again.';
+          galleryUploadStatus.classList.add('error');
+        } finally {
+          gallerySubmitBtn.disabled = false;
+          gallerySubmitLabel.textContent = 'Upload Pair';
+        }
+      });
+    }
+
+    /* ---------- Init ---------- */
+    loadedTabs.add('estimates');
+    loadEstimates();
   </script>
 </body>
 </html>
